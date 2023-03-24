@@ -7,7 +7,7 @@ public class Array10 {
 		names[1] = "Java";		
 		names[2] = "C++";
 		
-		// 같은 리터럴을 가지면 if로 출력
+		// 같은 리터럴을 가지면 if가 true로 출력
 		if(names[0] == names[1]) {
 			System.out.println("0번 방 == 1번 방");
 		} else {

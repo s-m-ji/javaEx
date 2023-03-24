@@ -17,7 +17,7 @@ public class Array03 {
 		names[1] = "뇽뇽냉";
 		
 		for(int i=0; i<names.length; i++) {
-//			System.out.println(names[i]);
+			System.out.println(names[i]);
 		}
 		
 		String[] rooms = {"", ""};
