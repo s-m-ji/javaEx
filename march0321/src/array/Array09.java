@@ -23,12 +23,7 @@ public class Array09 {
 		String[][] Scores = {{"도","레"},{"미","파"}};
 		String Score1 = Scores[0][1];
 		System.out.println(Score1);
-		for(int a=0; a<Scores.length; a++) {
-			String[] array = Scores[a];
-			for(int b=0; b<array.length; b++) {
-				System.out.printf("(%d, %d)=%s\n",a,b,array[b]);
-			}
-		}
+		
 		
 	}
 
