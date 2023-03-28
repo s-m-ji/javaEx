@@ -18,8 +18,10 @@ public class SupersonicAirplaneExample {
 		
 		airplane.fly();
 		SupersonicAirplane sss = (SupersonicAirplane) airplane;
-		// airplane.flyMode를 쓸 수 없는 이유는..... ????? 어흑마이깟
-		airplane.fly();
+		// airplane.flyMode를 쓸 수 없는 이유는... ??? 어흑마이깟
+		// 그것은 내가 자식 타입으로 강제 변환하고나서 sss가 아니라 airplane을 불러왔기 때문임 ^_^ 
+		sss.flyMode = SupersonicAirplane.NORMAL;
+		sss.fly();
 
 	}
 	

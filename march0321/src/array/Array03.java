@@ -17,7 +17,8 @@ public class Array03 {
 		names[1] = "뇽뇽냉";
 		
 		for(int i=0; i<names.length; i++) {
-//			System.out.println(names[i]);
+			System.out.println(names[i]); 
+			// 10개의 방을 만들어두었고, 값이 입력된 0,1번째만 출력
 		}
 		
 		String[] rooms = {"", ""};

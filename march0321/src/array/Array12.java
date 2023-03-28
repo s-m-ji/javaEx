@@ -9,7 +9,7 @@ public class Array12 {
 		// java 기본 API에서 제공해주는 메소드를 활용해서 배열을 복사
 		// 원본 배열, 옛 배열의 복사를 시작할 index, 신규 배열, 새 배열에 복사를 시작할 index, 복사할 갯수
 //		System.arraycopy(oldStrArr, 0, newStrArr, 0, 0);
-		System.arraycopy(oldStrArr, 0, newStrArr, 1, oldStrArr.length);
+		System.arraycopy(oldStrArr, 0, newStrArr, 0, oldStrArr.length);
 		
 		for(int i=0; i<newStrArr.length; i++) {
 			System.out.println(newStrArr[i]);

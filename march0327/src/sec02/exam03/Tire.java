@@ -2,6 +2,7 @@ package sec02.exam03;
 
 public class Tire {
 	// 최대회전수
+	// 타이어가 생성될 때 매개변수에 의해 초기화
 	public int maxRotation;
 	
 	// 누적회전수
@@ -24,8 +25,13 @@ public class Tire {
 	 */
 	public boolean roll() {
 		rotation++; // 타이어 1회전
-		if(rotation>maxRotation){
+		System.out.println(location+ "누적회전수 : " +rotation);
+		System.out.println(location+ "최대회전수 : " +maxRotation);
+		
+		if(rotation >= maxRotation){
 			return false; // 바퀴 교체 알림
+			// 물론 리턴값 - if조건을 바꿔서 매치해도 같은 값은 나옴 !
+			// false로 한 이유는 연습을 위해서라고 하심 ~~~ 
 		}
 		return true;
 	}

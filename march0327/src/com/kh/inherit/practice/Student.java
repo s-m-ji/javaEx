@@ -8,6 +8,7 @@ public class Student extends Person {
 		
 	}
 	
+	// 초기화 : 생성자의 매개변수를 필드에 입력합네당
 	public Student(String name, int age, double height, double weight, int grade, String major) {
 		// private이라서 super.age는 불가넝하기에 부모의 생성자를 호출
 		super(age, height, weight);
@@ -18,8 +19,13 @@ public class Student extends Person {
 	}
 
 	
+	@Override
 	public String information() {
-		return getName()+" "+getAge()+" "+getHeight()+" "+getWeight()+" "+getGrade()+" "+getMajor();
+		// super.information 반환타입: String
+		return super.information() +" "+ getGrade()+" "+getMajor();
+		
+		// String information = super.information();
+		// return information +" "+ getGrade()+" "+getMajor();
 	}
 
 	public int getGrade() {

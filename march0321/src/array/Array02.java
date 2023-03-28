@@ -8,8 +8,8 @@ public class Array02 {
 		// 반복문을 이용해서 배열에 입력된 값을 출력
 		for(int i=0; i<names.length; i++) {
 			// 배열의 값에 접근 : 변수명[index]
-//			System.out.println(names);
-//			System.out.println(names[i]);
+//			System.out.println(names); // -> 배열의 참조형 어쩌고만 반복해서 보여줌
+			System.out.println(names[i]); // -> {값목록}에 담긴 글자를 하나씩 개행해서 보여줌
 		}
 		
 		/*
@@ -33,7 +33,8 @@ public class Array02 {
 	System.out.println("배열의 길이는? " + j);
 	
 	double sum = 0;
-	for(int i=0; i<j; i++) { // double i=0; (X) -> index는 무조건 int(정수)타입만 가능함
+	for(int i=0; i<j; i++) { 
+		// double i=0; (X) -> index는 무조건 int(정수)타입만 가능함
 		sum += Score[i];
 	}
 	System.out.println("합계는? " + sum);

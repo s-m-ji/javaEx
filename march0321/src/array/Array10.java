@@ -7,19 +7,25 @@ public class Array10 {
 		names[1] = "Java";		
 		names[2] = "C++";
 		
-		// 같은 리터럴을 가지면 if로 출력
+		// 같은 리터럴을 가지고있기때문에 if로 출력
 		if(names[0] == names[1]) {
 			System.out.println("0번 방 == 1번 방");
 		} else {
 			System.out.println("0번 방 != 1번 방");
 		}
 		
-		// 객체를 생성할 경우 다른 메모리를 참조 -> else if로 출력
 		names[0] = new String("Java");
 		names[1] = new String("Java");
 		
+		// 객체를 생성할 경우 다른 메모리를 참조 -> else로 출력
+		if(names[0] == names[1]) {
+			System.out.println("0번 방 == 1번 방");
+		} else {
+			System.out.println("0번 방 != 1번 방");
+		}
+		
 		// 참조타입에서 == : 참조타입의 변수가 가지고 있는 메모리의 주소를 비교
-		// equals : 문자열 자체를 비교함
+		// equals : 문자열 자체를 비교함 -> 동일하니까 if 출력
 		if(names[0].equals(names[1])) {
 			System.out.println("0번 방 == 1번 방");
 		} else {

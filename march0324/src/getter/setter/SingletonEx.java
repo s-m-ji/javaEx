@@ -2,7 +2,12 @@ package getter.setter;
 
 public class SingletonEx {
 	
+	// new 생성자로 단 하나의 객체를 만듦 -> 현재 클래스 내부에서는 사용가능.
+	// *** 자신의 타입인 정적 필드를 하나 선언하고
+	// *** 자신의 개체를 생성해 초기화합니다.
+	// *** 참고로 클래스 내부에서는 new 연산자로 생성자 호출이 가능합니다.
 	private static SingletonEx singleton = new SingletonEx();
+	
 	
 	// 1. private을 써서 외부에서 생성자를 이용하지 못하게 제한
 	private SingletonEx() {

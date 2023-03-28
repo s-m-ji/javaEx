@@ -21,7 +21,7 @@ public class Array09 {
 		}
 		
 		String[][] Scores = {{"도","레"},{"미","파"}};
-		String Score1 = Scores[0][1];
+		String Score1 = Scores[1][0];
 		System.out.println(Score1);
 		
 		

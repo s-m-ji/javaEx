@@ -20,7 +20,7 @@ public class Person {
 	}
 
 	public String information() {
-		return "";
+		return getName()+" "+getAge()+" "+getHeight()+" "+getWeight();
 	}
 
 	public String getName() {

@@ -10,7 +10,7 @@ public class Array05 {
 	// (String[] args) : 매개변수 (타입 변수명) -> 없으면 생략 가능
 	public static void main(String[] args) {
 		// System.out.println(args.length);
-		// 변수만 생상되고 객체/배열의 방이 생성되지 않았기에 길이는 0
+		// 변수만 생성되고 객체/배열의 방이 생성되지 않았기에 길이는 0
 		// System.out.println(args[0]);
 		// 그래서 없는 방을 찾았기에 오류 발생
 		// 추후 main method의 매개변수로 배열 값이 들어가게됨

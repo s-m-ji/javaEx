@@ -4,7 +4,7 @@ public class ArrayIndexOutOfBoundsEx {
 	public static void main(String[] args) {
 		// 배열의 인덱스는 0부터 시작
 		// 배열의 총길이는 갯수를 반환
-		// 배열의 index흫 초과하는 방번호가 입력된 경우
+		// 배열의 index를 초과하는 방번호가 입력된 경우
 		// -> 오류 발생
 		// int sum = score[3]; // 인덱스3은 나올 수 없음
 		

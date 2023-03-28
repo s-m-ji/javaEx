@@ -1,5 +1,7 @@
 package array;
 
+import java.util.Arrays;
+
 public class Array04 {
 
 	public static void main(String[] args) {
@@ -10,6 +12,16 @@ public class Array04 {
 		names[0] = "스누피";
 		
 		System.out.println(names);
+		// 배열의 참조형 어쩌고만 출력
+		
+		System.out.println(Arrays.toString(names));
+		// [스누피, null, null, null, null] 이 형태로 출력
+		
+		System.out.println(names[0]);
+		// 0번째 방의 값을 출력 = 스누피
+		
+		System.out.println(names[1]);
+		// 1번째 방의 값을 출력 = 입력된게 없으니 초기값 null
 		
 		// 자바에서 참조형 주소에 메모리 주소를 표시하는 방법
 		// names.hashCode();
