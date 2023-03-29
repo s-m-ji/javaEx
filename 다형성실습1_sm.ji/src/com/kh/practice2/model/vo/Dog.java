@@ -9,8 +9,10 @@ public class Dog extends Animal {
 	}
 	
 	public Dog(String name, String kinds, int weight) {
+		// 부모 필드가 private이라서 생성자로 호출하여 초기화 ~
 		super(name, kinds);
-		this.weight = weight;
+//		this.weight = weight;
+		setWeight(weight);
 	}
 
 
@@ -22,14 +24,22 @@ public class Dog extends Animal {
 		this.weight = weight;
 	}
 
-	public static String getPlace() {
-		return PLACE;
-	}
+	// 이건 getter 생성하지말자고하심.
+//	public static String getPlace() {
+//		return PLACE;
+//	}
 	
 
 	@Override
 	public void speak() {
-		System.out.println(toString()+" 몸무게는 "+weight+"kg 입니다.");
+		// 부모의 메소드를 호출 super.
+		String str = super.toString();
+		System.out.println(str+" 몸무게는 "+weight+"kg 입니다.");
+//		System.out.println(toString()+" 몸무게는 "+weight+"kg 입니다.");
+		
+		// 만약 자식에 toString이라는 메소드가 또 있다면 super라고 표시해서
+		// 부모메소드를 재정의한다는걸 명시합네당 후후
+		
 	}
 	
 	
