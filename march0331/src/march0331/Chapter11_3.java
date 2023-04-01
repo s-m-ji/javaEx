@@ -21,13 +21,22 @@ public class Chapter11_3 {
 	
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
+		if(obj instanceof Chapter11_3) {
+			Chapter11_3 ch = (Chapter11_3) obj;
+//			if(ch.number == this.number) {
+//				return true;
+//			}
+			if(studentNum.equals(ch.getStudentNum())) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	@Override
 	public int hashCode() {
-		return super.hashCode();
+//		return number;
+		return studentNum.hashCode();
 	}
 
 	

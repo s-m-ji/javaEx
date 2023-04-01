@@ -63,27 +63,40 @@ public class Library {
 //		return res;
 //	}
 
-//	// String res로 담지 않는다면 바로 출력해서 부모의 toString을 리턴타입으로 넣으면 된다 
+	// String res로 담지 않는다면 바로 출력해서 부모의 toString을 리턴타입으로 넣으면 된다 
 //	@Override
 //	public String toString() {
-//		String str = "";
 //		for(Book book : bookList) {
 //			System.out.println(book.getTitle() + "/" + book.getAuthor() + book.isRent() + "\n");
 //		}
 //		return super.toString();
 //	}
-	
+//	
 	@Override
 	public String toString() {
 		int i=0;
-		// 책 목록 출력
-		for(Book b : bookList) {
-			System.out.println(i + " : " + b.toString());
+		for(Book book : bookList) {
+			String str = "";
+			if(book.isRent() == true) {
+				str = " *대여중*";
+			}
+			System.out.println( i+ "번: " + book.getTitle() + "/" + book.getAuthor() + str + "\n");
 			i++;
 		}
-		// return super.toString();
-		return "";
+		return null;
 	}
+	
+//	@Override
+//	public String toString() {
+//		int i=0;
+//		// 책 목록 출력
+//		for(Book b : bookList) {
+//			System.out.println(i + " : " + b.toString());
+//			i++;
+//		}
+//		// return super.toString();
+//		return "";
+//	}
 	
 	
 }
