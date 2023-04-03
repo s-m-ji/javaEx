@@ -1,0 +1,57 @@
+package com.library.vo;
+
+public class Book {
+	
+	private String title;		// 책제목
+	private String author;		// 작가
+	private boolean isRent = false;		// 대여여부
+	
+	@Override
+	public String toString() {
+		String str = "";
+		if(isRent) {
+			str = "대여중";
+		}
+		return getTitle() +" "+ getAuthor() + " " + str;
+	}
+	
+	public String info() {
+		return getTitle() +" "+ getAuthor() + " " + isRent;
+	}
+	
+	public Book(String title, String author) {
+		this.title = title;
+		this.author = author;
+	}
+	
+	public Book(String title, String author, String isRent) {
+		System.out.println(isRent);
+		System.out.println(Boolean.parseBoolean(isRent));
+		this.title = title;
+		this.author = author;
+		if(isRent != null) {
+			this.isRent = Boolean.parseBoolean(isRent);
+			
+		}
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public boolean isRent() {
+		return isRent;
+	}
+	public void setRent(boolean isRent) {
+		this.isRent = isRent;
+	}
+	
+}
