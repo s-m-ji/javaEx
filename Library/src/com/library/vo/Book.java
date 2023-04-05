@@ -27,6 +27,13 @@ public class Book {
 	}
 	
 	
+	// 책 정보 재정의
+	@Override
+	public String toString() {
+		return getno() +" "+ getTitle() +" "+ getAuthor() +" "+ isRent;
+	}
+	
+	
 	public int getno() {
 		return no;
 	}

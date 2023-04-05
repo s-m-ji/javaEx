@@ -25,7 +25,7 @@ public class Library {
 //	public Library() {
 //		// 책의 리스트를 조회 (추후 파일 또는 DB 이용)
 //		// 책을 생성해서 리스트에 담는다
-//		// TODO : 일련번호 중복 방지
+//		// TODO : 일련번호 중복 방지 -> getNo == no 이용해서 중복을 제거해줄 수 있다.
 //		// -> DB 이용 시에는 번호를 기본key로 사용 시, 중복된 번호는 입력이 안되므로 오류 발생
 //		bookList.add(new Book(1, "책1", "작가1", false));
 //		bookList.add(new Book(2, "책2", "작가2", false));
@@ -38,10 +38,21 @@ public class Library {
 		} else {
 			this.dao = new FileDao();
 		}
-		bookList.add(new Book(1, "책1", "작가1", false));
-		bookList.add(new Book(2, "책2", "작가2", false));
-		bookList.add(new Book(3, "책3", "작가3", false));
-		bookList.add(new Book(4, "책4", "작가4", false));
+		
+		// 책의 리스트를 조회
+		// 책을 생성하여 리스트에 담아줌
+		bookList = dao.getBookList();
+		
+		
+		// 등록된 책 리스트 출력
+		System.out.println("라이브러리 생성자");
+		System.out.println("도서 목록");
+		info();
+		
+//		bookList.add(new Book(1, "책1", "작가1", false));
+//		bookList.add(new Book(2, "책2", "작가2", false));
+//		bookList.add(new Book(3, "책3", "작가3", false));
+//		bookList.add(new Book(4, "책4", "작가4", false));
 	}
 	
 	
@@ -59,9 +70,35 @@ public class Library {
 		// 리스트에 책을 추가
 		// bookList.add(new Book(no, title, author, isRent));
 		Book book = new Book(no, title, author, isRent);
+		
+		// 신규 책을 생성하여 리스트에 담기
 		bookList.add(book);
-		dao.insertBook(book);
+
+		// 리스트를 파일에 저장하기
+		dao.insertBook(bookList);
 		return true;
+	}
+	
+	
+	
+	/**
+	 * 책 삭제 
+	 * @param index
+	 * @return
+	 */
+	// 삭제하기 - > 인덱스 번호가 없는 경우에 메세지 처리 수 false 반환
+	public boolean deleteBook(int index) {
+		for(Book book : bookList) {
+			// 책의 일련번호를 확인
+			if(index == book.getno()) {
+//				 bookList.remove(index); // index로 넣으면 1번 책이 아니라, 인덱스 1번째 책이 삭제되므로 book을 넣어야합네당! 
+//				 return true;
+				dao.deleteBook(bookList);
+				return bookList.remove(book); 
+			}
+		}
+		System.err.println(index + "번에 해당하는 도서를 찾지 못했습니다.");
+		return false;
 	}
 	
 	
@@ -83,43 +120,27 @@ public class Library {
 				//대여 여부 수정 : 책의 정보를 수정
 				book.setRent(true);
 				System.out.println("대여되었습니다.");
+				dao.updatBook(bookList);
 				return true;
 				// TODO dao.updatebook(book);
 			}
 		}
-		// TODO -> 해당 도서를 찾지 못했을 때 대여되었습니다. 나오면 안됨
 		System.err.println(index + "번은 대여 불가한 도서입니다.");
 		return false;
 	}
 	
 	
 	/**
-	 * 책 삭제 
+	 * 책 반납
 	 * @param index
 	 * @return
 	 */
-	// 삭제하기 - > 인덱스 번호가 없는 경우에 메세지 처리 수 false 반환
-	public boolean deleteBook(int index) {
-		for(Book book : bookList) {
-			// 책의 일련번호를 확인
-			if(index == book.getno()) {
-//				 bookList.remove(index); // index로 넣으면 1번 책이 아니라, 인덱스 1번째 책이 삭제되므로 book을 넣어야합네당! 
-//				 return true;
-				dao.deleteBook(book);
-				return bookList.remove(book); 
-			}
-		}
-		System.err.println(index + "번에 해당하는 도서를 찾지 못했습니다.");
-		return false;
-	}
-	
-	
-	// 반납하기
 	public boolean returnBook(int index) {
 		for(Book book : bookList) {
 			if(index == book.getno()) {
 				if(! book.isRent()) {
 					System.out.println("returnBook -> " + index + "번은 이미 반납 처리된 도서입니다.");
+					return false;
 				} else {
 				book.setRent(false);
 				System.out.println("반납되었습니다.");
