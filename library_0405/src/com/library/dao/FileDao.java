@@ -62,7 +62,7 @@ public class FileDao implements Dao {
 		// 오류 발생 시, 프로그램이 비정상적으로 종료되는 것을 방지하기 위해 오류 처리
 			
 		try {
-			// 공백을 기준으로 배열 저장
+			// 공백 또는 특정 문자를 기준으로 배열 저장
 			String[] strArry = readLine.split("/");
 			
 			// 배열 데이터를 알맞은 타입/변수로 저장
