@@ -7,7 +7,8 @@ public class App {
 	static Scanner scanner = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		Library lib = new Library();
+//		Library lib = new Library();
+		Library lib = new Library("DB");
 		
 		// main메소드는 static(정적)메소드
 		// 정적 필드에서는 인스턴스 필드 사용 불가

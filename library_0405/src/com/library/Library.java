@@ -3,6 +3,7 @@ package com.library;
 import java.util.List;
 
 import com.library.dao.Dao;
+import com.library.dao.DatabaseDao;
 import com.library.dao.FileDao;
 import com.library.vo.Book;
 
@@ -18,6 +19,18 @@ public class Library {
 		System.out.println(toString()); 
 		// 메소드명을 바로 적으면 해당 클래스 내에 있는 메소드로 잘 인식함
 	}
+	
+	
+	// Database용 Library 생성자를 하나 더 만들었음
+	public Library(String daoType) {
+
+		if(daoType.equals("DB")) {
+			dao = new DatabaseDao();
+		}
+		list = dao.getList();
+		System.out.println(toString());
+	}
+	
 	
 	@Override
 	public String toString() {
@@ -50,6 +63,8 @@ public class Library {
 		// 파일에 저장이 잘 되었는지를 또 체크
 		// listToFile() 메소드의 타입이 boolean이라서 같은 타입으로 함
 		boolean result = dao.listToFile(list);
+		
+		
 		
 		if(! result) {
 			// 파일이 정상 등록되지 않았다면 리스트에서 제거
@@ -107,6 +122,7 @@ public class Library {
 				if(!book.isRent()) {
 					book.setRent(true);
 					boolean check = dao.listToFile(list);
+					
 					if(!check) {
 						System.err.println("파일 출력 중 오류 발생---lib.rentBook");
 						book.setRent(false);
@@ -141,6 +157,20 @@ public class Library {
 //						System.err.println("파일 출력 중 오류 발생");
 //						book.setRent(true);
 //					}
+					
+					// DB 업데이트 로직 호출
+					dao.update(no);
+					
+					// 데이터베이스 업데이트
+//					int res = dao.update(no);
+//					
+//					if(res>0) {
+//						System.out.println(res + "건 정상 처리 되었습니다.db");
+//					} else {
+//						System.out.println("처리 도중 오류가 발생했습니다.db");
+//						book.setRent(false);
+//					}
+					
 					System.out.println(no+"번을 반납했습니다.");
 					System.out.println("목록을 재출력합니다.");
 					System.out.println(toString());
