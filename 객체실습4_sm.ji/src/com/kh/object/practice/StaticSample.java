@@ -12,7 +12,7 @@ public class StaticSample {
 	}
 	
 	public static void setChar(int index, char c) {
-		// 전달받은 인덱스 위치의 value값을 전달받은 문자로 변경하는 static 메소드
+		// value값을 전달받은 인덱스 위치에 전달받은 문자로 변경하는 static 메소드
 		// String 문자열을 char[]로 반환
 		char[] charArr = value.toCharArray();
 		// 배열이름[방번호] = 값;
