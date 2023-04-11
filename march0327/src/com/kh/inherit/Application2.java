@@ -65,11 +65,13 @@ public class Application2 {
 		index++;
 		
 		// 반복문 탈출
-		System.out.println("종료 원해요? 그럼 n입력해줘요");
+		System.out.println("y:계속 입력, n:종료");
 		String next = scan.next();
 		if(next.equals("n") || index == 10) {
 			break Outter;
-		} 
+		} else if (next.equalsIgnoreCase("y")){
+			
+		}
 		
 	}
 		for(Employee e : empArry) {
