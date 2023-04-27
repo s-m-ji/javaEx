@@ -23,4 +23,7 @@ public class Anonymous {
 		Anonymous anm = new Anonymous();
 		anm.method(10,10);
 	}
+	
+	
+
 }
