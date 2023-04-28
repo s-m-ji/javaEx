@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.library.common.ConnectionUtil;
 import com.library.vo.Member;
@@ -19,42 +21,76 @@ public class MemberDao {
 	public Member login(String id, String pw) {
 		Member member = null;
 		
-//		String sql =
-//				String.format("select id, name, adminyn, status, grade from member where id = '%s' and pw = '%s'"
-//				, id, pw) ;
-////		System.out.println("===== login() sql 구문: "+ sql +"===== ");
-//		try (Connection conn = ConnectionUtil.getConnection();
-//				Statement stmt = conn.createStatement();
-//				ResultSet rs = stmt.executeQuery(sql)) {
-//			
-//			// 질의결과 결과집합을 member 객체에 담아준다.
-//			if(rs.next()) {
-//				
-//				// id, pw는 매개변수에서 가져오기 때문에 또 get할 필요는 없음.
-//				String name = rs.getString(2);
-//				String adminYN = rs.getString(3);
-//				String status = rs.getString(4);
-//				String grade = rs.getString(5);
-//				// pw은 노출 방지를 위해 ""처리 하였음.
-//				member = new Member(id, "", name, adminYN, status, grade);
-//			}
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-		
-		String sql = "select id, name, adminyn, status, grade from member where id = '?' and pw = '?'";
-		
+		String sql =
+				String.format("select id, name, adminyn, status, grade from member where id = '%s' and pw = '%s'"
+				, id, pw) ;
+//		System.out.println("===== login() sql 구문: "+ sql +"===== ");
 		try (Connection conn = ConnectionUtil.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(sql);) {
-			pstmt.setString(1, member.getId());
-			pstmt.setString(3, member.getName());
-			pstmt.setString(4, member.getId());
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(sql)) {
+			
+			// 질의결과 결과집합을 member 객체에 담아준다.
+			if(rs.next()) {
+				
+				// id, pw는 매개변수에서 가져오기 때문에 또 get할 필요는 없음.
+				String name = rs.getString(2);
+				String adminYN = rs.getString(3);
+				String status = rs.getString(4);
+				String grade = rs.getString(5);
+				// pw은 노출 방지를 위해 ""처리 하였음.
+				member = new Member(id, "", name, adminYN, status, grade);
+				
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		// PreparedStatement 응용해볼거면 마저 작성을 해야한다구..!
+//		String sql = "select id, name, adminyn, status, grade from member where id = ? and pw = ?";
+//		
+//		try (Connection conn = ConnectionUtil.getConnection();
+//				PreparedStatement pstmt = conn.prepareStatement(sql);) {
+//			pstmt.setString(1, id);
+//			// --> 위에서 member를 null로 만들어놓고 거기서 getName을 가져오려고하니까 
+//			// 아무것도 없는데를 가리키니까 당연히 null예외가 생기는것 !
+//			// 매개변수로 받아온 id, pw를 가져와야함.
+//			pstmt.setString(3, member.getName());	
+//			pstmt.setString(4, member.getId());
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 	
 		return member;
+	}
+	
+	/**
+	 * 멤버 목록 조회
+	 * @return
+	 */
+	public List<Member> getList() {
+		List<Member> list = new ArrayList<Member>();
+		String sql = "select * from member";
+		
+		try (Connection conn = ConnectionUtil.getConnection();
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);) {
+			
+			while(rs.next()) {
+				String id = rs.getString(1);
+				String name = rs.getString(3);
+				String adminyn = rs.getString(4);
+				String status = rs.getString(5);
+				String grade = rs.getString(6);
+				
+				Member member = new Member(id, null, name, adminyn, status, grade);
+				list.add(member);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+				
+		return list;
 	}
 
 	/**
@@ -67,8 +103,8 @@ public class MemberDao {
 		
 		// 특정 컬럼의 값만 몇개 넣어서 insert하기
 		String sql = String.format
-				("insert into member (id, pw, name) values ('%s', '%s', '%s')"
-				, member.getId(), member.getPw(), member.getName());
+				("insert into member (id, pw, name, adminYN) values ('%s', '%s', '%s', '%s')"
+				, member.getId(), member.getPw(), member.getName(), member.getAdminyn());
 //		String sql = String.format	
 //				("insert into member values ('%s', '%s', '%s', '%s', '%s', '%s')"
 //						, member.getId(), member.getPw(), member.getName(), member.getAdminyn(), member.getStatus(), member.getGrade());
@@ -177,6 +213,8 @@ public class MemberDao {
 		System.out.println("멤버 삭제 완료");
 		return res;
 	}
+
+	
 	
 }
 

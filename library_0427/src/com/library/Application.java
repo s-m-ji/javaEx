@@ -2,6 +2,7 @@ package com.library;
 
 import java.util.List;
 
+import com.library.controller.LibraryController;
 import com.library.dao.BookDao;
 import com.library.dao.MemberDao;
 import com.library.vo.Book;
@@ -20,7 +21,7 @@ public class Application {
 //		
 //		Book book = new Book("test5","test5");
 //		dao.insert(book);
-////		
+
 //		Book book2 = new Book("스니커즈 사피엔스8","박상영8");
 //		dao.insert(book2);
 		
@@ -39,7 +40,7 @@ public class Application {
 //		System.out.println(dao.getList());
 		
 		
-		MemberDao mDao = new MemberDao();
+//		MemberDao mDao = new MemberDao();
 		
 //		System.out.println(mDao.login("ADMIN", "1234"));
 		
@@ -47,14 +48,39 @@ public class Application {
 //		Member member = new Member("user03", "1234", "사용자3", null, null, null);
 //		mDao.insert(member);
 		
-		System.out.println(mDao.idCheck2("user01"));
+//		System.out.println(mDao.idCheck2("user01"));
 		
 //		System.out.println(mDao.delete("user03"));
 //		mDao.delete("user03");
 		
-//		BookDao bDao = new BookDao();
+//		BookDao bDao = new BookDao();	
 //		System.out.println(bDao.getList());
 
+		LibraryController lib = new LibraryController();
+		lib.library();
+		
+		
+		
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
